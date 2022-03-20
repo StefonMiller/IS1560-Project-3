@@ -1,0 +1,13 @@
+    As can be seen from the output screenshot provided, my code evaluates all 4 queries in ~1 minute and 40 seconds. It was written and tested using
+Python version 3.9.6. It was a major challenge to optimize my code in such a way that it ran within this time constraint, and I had to sacrifice memory optimization in some
+places in order to increase compuatational performance. The exact retrieval of my queries can be seen in the output screenshot, the probabilities generated
+were calculated using a miu value of 2000, as was recommended in class. I learned that these probability estimates were extremely low due to the fact that 
+the query likelihood model is multiplying multiple incredibly small probabilities together in order to get the total probability of that query coming from a 
+certain document. 
+
+    Since Dirichlet Prior smoothing is linear interpolated smoothing with a lamda dynamically calculated based on document length, miu values that make lambda
+smaller will in turn put less value on the maximum likelihood equation while miu values that make lamda larger will put less value on the probality from the 
+general collection. To tune miu, one would have to look at the set of returned documents and conduct relevance judgement to determine if the output is more or less relevant
+to the given query. I tested different values of miu from 500 to 10000, as detailed in the article referenced in the assignment sheet, and found that the only difference in 
+order was generated with larger values of miu. Around miu=8000, some of the document ranks changed, but not by much. Some documents switched places or moved only a few ranks
+up or down. As mentioned before, to determine which value is 'better', each ranked list would have to be evaluated to see which top-ranked documents were more relevant to the query.
